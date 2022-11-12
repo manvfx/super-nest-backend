@@ -9,6 +9,7 @@ import {
   Req,
   Res,
   SerializeOptions,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -18,6 +19,7 @@ import { RegisterDto } from './dto/register.dto';
 import { JwtService } from '@nestjs/jwt';
 import { Response, Request } from 'express';
 import { AuthInterceptor } from './auth.interceptor';
+import { AuthGuard } from './auth.guard';
 
 @ApiTags('auth')
 @SerializeOptions({
@@ -71,6 +73,7 @@ export class AuthController {
     return user;
   }
 
+  @UseGuards(AuthGuard)
   @Get('user')
   @ApiOperation({ summary: 'show user' })
   async user(@Req() request: Request) {
@@ -80,6 +83,7 @@ export class AuthController {
     return this.userService.findOne({ id: data['id'] });
   }
 
+  @UseGuards(AuthGuard)
   @Post('logout')
   @ApiOperation({ summary: 'show user' })
   async logout(@Res({ passthrough: true }) response: Response) {
