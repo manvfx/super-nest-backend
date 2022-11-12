@@ -8,6 +8,8 @@ import {
   UseInterceptors,
   UseGuards,
   Param,
+  Patch,
+  Delete,
 } from '@nestjs/common';
 import { User } from './schemas/user.schema';
 import { UserService } from './user.service';
@@ -16,6 +18,7 @@ import * as bcrypt from 'bcrypt';
 import { UserCreateDto } from './dto/user-create.dto';
 import { AuthInterceptor } from '../auth/auth.interceptor';
 import { AuthGuard } from '../auth/auth.guard';
+import { UserUpdateDto } from './dto/user-update.dto';
 
 @ApiTags('users')
 @SerializeOptions({
@@ -25,9 +28,7 @@ import { AuthGuard } from '../auth/auth.guard';
 @UseGuards(AuthGuard)
 @Controller('users')
 export class UserController {
-  constructor(
-    private userService: UserService,
-  ) {}
+  constructor(private userService: UserService) {}
 
   @Get('list')
   @ApiOperation({ summary: 'Show user list' })
@@ -53,6 +54,24 @@ export class UserController {
   @ApiOperation({ summary: 'Show user list' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   async findOne(@Param('id') id: number): Promise<User> {
-    return this.userService.findOne({ id });
+    return this.userService.findOne({ _id: id });
+  }
+
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update single user' })
+  @ApiResponse({ status: 403, description: 'Forbidden.' })
+  async update(
+    @Param('id') id: number,
+    @Body() body: UserUpdateDto,
+  ): Promise<User> {
+    await this.userService.update(id, body);
+    return this.userService.findOne({ _id: id });
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete single user' })
+  @ApiResponse({ status: 403, description: 'Forbidden.' })
+  async delete(@Param('id') id: number): Promise<User> {
+    return this.userService.delete(id);
   }
 }

@@ -10,10 +10,4 @@ export class UserCreateDto {
   @IsNotEmpty()
   @IsEmail()
   email: string;
-  
-//   @IsNotEmpty()
-//   password: string;
-  
-//   @IsNotEmpty()
-//   password_confirm: string;
 }

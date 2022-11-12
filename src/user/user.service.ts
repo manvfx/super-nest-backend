@@ -14,11 +14,19 @@ export class UserService {
     return this.UserModel.find();
   }
 
+  async findOne(condition): Promise<UserDocument> {
+    return await this.UserModel.findOne(condition).exec();
+  }
+
   async create(data): Promise<User> {
     return await new this.UserModel(data).save();
   }
 
-  async findOne(condition): Promise<UserDocument> {
-    return this.UserModel.findOne(condition);
+  async update(id: number, data): Promise<User> {
+    return this.UserModel.findByIdAndUpdate(id, data).exec();
+  }
+
+  async delete(id: number): Promise<User> {
+    return await this.UserModel.findByIdAndDelete(id).exec();
   }
 }
