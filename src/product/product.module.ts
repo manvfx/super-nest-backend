@@ -4,13 +4,14 @@ import { CommonModule } from 'src/common/common.module';
 import { ProductController } from './product.controller';
 import { ProductService } from './product.service';
 import { Product, ProductSchema } from './schemas/product.schema';
+import { UploadController } from './upload.controller';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
     CommonModule,
   ],
-  controllers: [ProductController],
+  controllers: [ProductController,UploadController],
   providers: [ProductService],
 })
 export class ProductModule {}
