@@ -6,6 +6,7 @@ import {
   SwaggerCustomOptions,
 } from '@nestjs/swagger';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -29,6 +30,11 @@ async function bootstrap() {
   app.enableCors();
   app.setGlobalPrefix('api/v1');
   app.useGlobalPipes(new ValidationPipe());
+  app.use(cookieParser());
+  app.enableCors({
+    origin: 'http://localhost:8080',
+    credentials: true,
+  });
   app.enableVersioning({
     type: VersioningType.URI,
   });
