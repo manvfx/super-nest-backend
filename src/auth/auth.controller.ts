@@ -1,12 +1,15 @@
 import {
   BadRequestException,
   Body,
+  ClassSerializerInterceptor,
   Controller,
   Get,
   NotFoundException,
   Post,
   Req,
   Res,
+  SerializeOptions,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UserService } from 'src/user/user.service';
@@ -14,8 +17,13 @@ import * as bcrypt from 'bcrypt';
 import { RegisterDto } from './dto/register.dto';
 import { JwtService } from '@nestjs/jwt';
 import { Response, Request } from 'express';
+import { AuthInterceptor } from './auth.interceptor';
 
 @ApiTags('auth')
+@SerializeOptions({
+  excludePrefixes: ['password'],
+})
+@UseInterceptors(ClassSerializerInterceptor, AuthInterceptor)
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -44,7 +52,7 @@ export class AuthController {
   async login(
     @Body('email') email: string,
     @Body('password') password: string,
-    @Res() response: Response,
+    @Res({ passthrough: true }) response: Response,
   ) {
     const user = await this.userService.findOne({ email });
 
