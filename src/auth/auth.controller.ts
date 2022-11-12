@@ -79,4 +79,14 @@ export class AuthController {
 
     return this.userService.findOne({ id: data['id'] });
   }
+
+  @Post('logout')
+  @ApiOperation({ summary: 'show user' })
+  async logout(@Res({ passthrough: true }) response: Response) {
+    response.clearCookie('jwt');
+
+    return {
+      message: 'success',
+    };
+  }
 }
