@@ -12,4 +12,7 @@ export class ProductCreateDto {
 
   @IsNotEmpty()
   price: number;
+
+  @IsNotEmpty()
+  category: string;
 }

@@ -57,7 +57,7 @@ export class UserController {
     return this.userService.findOne({ _id: id });
   }
 
-  @Patch(':id')
+  @Patch('update/:id')
   @ApiOperation({ summary: 'Update single user' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   async update(
@@ -68,7 +68,7 @@ export class UserController {
     return this.userService.findOne({ _id: id });
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   @ApiOperation({ summary: 'Delete single user' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   async delete(@Param('id') id: number): Promise<User> {

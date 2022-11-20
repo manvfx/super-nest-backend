@@ -93,4 +93,28 @@ export class AuthController {
       message: 'success',
     };
   }
+
+  @Post('login-otp')
+  @ApiOperation({ summary: 'login otp' })
+  async loginByOtp(
+    @Body('email') email: string,
+    @Body('password') password: string,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const user = await this.userService.findOne({ email });
+
+    if (!user) {
+      throw new NotFoundException('User Not Found');
+    }
+
+    if (!(await bcrypt.compare(password, user.password))) {
+      throw new BadRequestException('Invalid credentials');
+    }
+
+    const jwt = await this.jwtService.signAsync({ id: user._id });
+
+    response.cookie('jwt', jwt, { httpOnly: true });
+
+    return user;
+  }
 }

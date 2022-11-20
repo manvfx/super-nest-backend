@@ -7,6 +7,8 @@ import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
 import { SubscriptionModule } from './subscription/subscription.module';
 import { CommonModule } from './common/common.module';
+import { SmsModule } from './sms/sms.module';
+import { ManagerModule } from './manager/manager.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { CommonModule } from './common/common.module';
     ProductModule,
     SubscriptionModule,
     CommonModule,
+    SmsModule,
+    ManagerModule,
   ],
   controllers: [],
   providers: [],

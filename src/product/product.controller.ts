@@ -37,6 +37,7 @@ export class ProductController {
       description: body.description,
       image: body.image,
       price: body.price,
+      category: body.category,
     });
   }
 
@@ -47,7 +48,7 @@ export class ProductController {
     return this.productService.findOne({ _id: id });
   }
 
-  @Patch(':id')
+  @Patch('update/:id')
   @ApiOperation({ summary: 'Update single product' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   async update(
@@ -58,7 +59,7 @@ export class ProductController {
     return this.productService.findOne({ _id: id });
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   @ApiOperation({ summary: 'Delete single product' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   async delete(@Param('id') id: number): Promise<Product> {
