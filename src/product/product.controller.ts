@@ -15,7 +15,7 @@ import { ProductCreateDto } from './dto/product-create.dto';
 import { AuthGuard } from '../auth/auth.guard';
 import { ProductUpdateDto } from './dto/product-update.dto';
 
-@ApiTags('products')
+@ApiTags('Product')
 @UseGuards(AuthGuard)
 @Controller('products')
 export class ProductController {

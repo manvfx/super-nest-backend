@@ -20,7 +20,7 @@ import {
   import { AuthGuard } from '../auth/auth.guard';
   import { ManagerUpdateDto } from './dto/manager-update.dto';
   
-  @ApiTags('manager')
+  @ApiTags('Manager')
   @SerializeOptions({
     excludePrefixes: ['password'],
   })

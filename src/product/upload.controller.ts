@@ -13,7 +13,7 @@ import { Response } from 'express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
-@ApiTags('upload')
+@ApiTags('Upload')
 @Controller()
 export class UploadController {
   @Post('uploads')

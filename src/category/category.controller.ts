@@ -15,7 +15,7 @@ import {
   import { AuthGuard } from '../auth/auth.guard';
   import { CategoryUpdateDto } from './dto/category-update.dto';
   
-  @ApiTags('categories')
+  @ApiTags('Category')
   @UseGuards(AuthGuard)
   @Controller('categories')
   export class CategoryController {

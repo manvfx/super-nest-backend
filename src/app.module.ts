@@ -9,6 +9,7 @@ import { SubscriptionModule } from './subscription/subscription.module';
 import { CommonModule } from './common/common.module';
 import { SmsModule } from './sms/sms.module';
 import { ManagerModule } from './manager/manager.module';
+import { SellerModule } from './seller/seller.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ManagerModule } from './manager/manager.module';
     CommonModule,
     SmsModule,
     ManagerModule,
+    SellerModule,
   ],
   controllers: [],
   providers: [],

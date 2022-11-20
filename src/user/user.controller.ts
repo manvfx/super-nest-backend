@@ -20,7 +20,7 @@ import { AuthInterceptor } from '../auth/auth.interceptor';
 import { AuthGuard } from '../auth/auth.guard';
 import { UserUpdateDto } from './dto/user-update.dto';
 
-@ApiTags('users')
+@ApiTags('User')
 @SerializeOptions({
   excludePrefixes: ['password'],
 })

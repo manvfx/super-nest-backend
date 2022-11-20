@@ -21,7 +21,7 @@ import { Response, Request } from 'express';
 import { AuthInterceptor } from './auth.interceptor';
 import { AuthGuard } from './auth.guard';
 
-@ApiTags('auth')
+@ApiTags('Auth')
 @SerializeOptions({
   excludePrefixes: ['password'],
 })
