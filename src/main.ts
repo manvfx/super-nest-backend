@@ -23,7 +23,7 @@ async function bootstrap() {
     swaggerOptions: {
       persistAuthorization: true,
     },
-    customSiteTitle: 'My API Docs',
+    customSiteTitle: 'Listoapp API Docs',
   };
   SwaggerModule.setup('api-docs', app, document, customOptions);
   //global app config

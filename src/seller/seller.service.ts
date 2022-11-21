@@ -11,7 +11,7 @@ export class SellerService {
   ) {}
 
   async findAll(): Promise<Seller[]> {
-    return this.SellerModel.find();
+    return this.SellerModel.find().populate('shops', 'name').exec();
   }
 
   async findOne(condition): Promise<SellerDocument> {
