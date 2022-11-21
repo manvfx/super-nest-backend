@@ -18,8 +18,11 @@ export class Shop {
   @Prop({ type: Location })
   location: Location;
 
-  @Prop()
+  @Prop({ default: true })
   isActive: Boolean;
+
+  @Prop({ default: false })
+  expired: Boolean;
 
   @Prop()
   createdAt: Date;
