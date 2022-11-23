@@ -1,8 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type ManagerDocument = Manager & Document;
-
 @Schema({ timestamps: true })
 export class Manager {
   @Prop()
@@ -36,4 +34,5 @@ export class Manager {
   deletedAt?: Date;
 }
 
+export type ManagerDocument = Manager & Document;
 export const ManagerSchema = SchemaFactory.createForClass(Manager);

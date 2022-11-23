@@ -2,8 +2,6 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Category } from '../../category/schemas/category.schema';
 
-export type ProductDocument = Product & Document;
-
 @Schema({ timestamps: true })
 export class Product {
   @Prop()
@@ -25,4 +23,5 @@ export class Product {
   category: MongooseSchema.Types.ObjectId;
 }
 
+export type ProductDocument = Product & Document;
 export const ProductSchema = SchemaFactory.createForClass(Product);

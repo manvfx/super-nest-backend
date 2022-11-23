@@ -2,8 +2,6 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Shop } from '../../shop/schemas/shop.schema';
 
-export type SellerDocument = Seller & Document;
-
 @Schema({ timestamps: true })
 export class Seller {
   @Prop()
@@ -24,6 +22,9 @@ export class Seller {
   @Prop()
   verifyCode: string;
 
+  @Prop({ default: 'free' })
+  vipType: string;
+
   @Prop({ default: true })
   isActive: Boolean;
 
@@ -36,8 +37,12 @@ export class Seller {
   @Prop()
   deletedAt?: Date;
 
+  @Prop()
+  vipAt?: Date;
+
   @Prop({ type: [MongooseSchema.Types.ObjectId], ref: Shop.name })
   shops: MongooseSchema.Types.ObjectId[];
 }
 
+export type SellerDocument = Seller & Document;
 export const SellerSchema = SchemaFactory.createForClass(Seller);

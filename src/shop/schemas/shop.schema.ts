@@ -2,8 +2,6 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { Location } from './location.schema';
 
-export type ShopDocument = Shop & Document;
-
 @Schema({ timestamps: true })
 export class Shop {
   @Prop()
@@ -31,4 +29,5 @@ export class Shop {
   deletedAt?: Date;
 }
 
+export type ShopDocument = Shop & Document;
 export const ShopSchema = SchemaFactory.createForClass(Shop);

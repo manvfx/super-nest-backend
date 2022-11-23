@@ -10,6 +10,7 @@ import { CommonModule } from './common/common.module';
 import { SmsModule } from './sms/sms.module';
 import { ManagerModule } from './manager/manager.module';
 import { SellerModule } from './seller/seller.module';
+import { TransactionModule } from './transaction/transaction.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { SellerModule } from './seller/seller.module';
     SmsModule,
     ManagerModule,
     SellerModule,
+    TransactionModule,
   ],
   controllers: [],
   providers: [],
