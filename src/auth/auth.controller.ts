@@ -78,12 +78,10 @@ export class AuthController {
 
   @UseGuards(AuthGuard)
   @Get('user')
-  @ApiOperation({ summary: 'show user' })
+  @ApiOperation({ summary: 'show user profile' })
   async user(@Req() request: Request) {
     const cookie = request.cookies['jwt'];
     const data = await this.jwtService.verifyAsync(cookie);
-    console.log('datadatadatadata', data['id']);
-
     return this.userService.findOne({ _id: data['id'] });
   }
 
