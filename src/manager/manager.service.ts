@@ -29,4 +29,8 @@ export class ManagerService {
   async delete(id: number): Promise<Manager> {
     return await this.ManagerModel.findByIdAndDelete(id).exec();
   }
+
+  async countTotalManager() {
+    return await this.ManagerModel.countDocuments();
+  }
 }

@@ -29,4 +29,8 @@ export class CategoryService {
   async delete(id: number): Promise<Category> {
     return await this.CategoryModel.findByIdAndDelete(id).exec();
   }
+
+  async countTotalCategory() {
+    return await this.CategoryModel.countDocuments();
+  }
 }

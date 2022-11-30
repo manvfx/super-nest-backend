@@ -13,5 +13,6 @@ import { UploadController } from './upload.controller';
   ],
   controllers: [ProductController,UploadController],
   providers: [ProductService],
+  exports: [ProductService],
 })
 export class ProductModule {}

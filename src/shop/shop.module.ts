@@ -11,6 +11,7 @@ import { CommonModule } from 'src/common/common.module';
     CommonModule,
   ],
   controllers: [ShopController],
-  providers: [ShopService]
+  providers: [ShopService],
+  exports: [ShopService],
 })
 export class ShopModule {}

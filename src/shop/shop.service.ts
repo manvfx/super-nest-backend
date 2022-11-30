@@ -29,4 +29,8 @@ export class ShopService {
   async delete(id: number): Promise<Shop> {
     return await this.ShopModel.findByIdAndDelete(id).exec();
   }
+
+  async countTotalShop() {
+    return await this.ShopModel.countDocuments();
+  }
 }

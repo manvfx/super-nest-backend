@@ -11,10 +11,12 @@ import { SmsModule } from './sms/sms.module';
 import { ManagerModule } from './manager/manager.module';
 import { SellerModule } from './seller/seller.module';
 import { TransactionModule } from './transaction/transaction.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost/shopdatabase'),
+    DashboardModule,
     UserModule,
     AuthModule,
     ShopModule,

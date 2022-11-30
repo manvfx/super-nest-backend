@@ -29,4 +29,8 @@ export class UserService {
   async delete(id: number): Promise<User> {
     return await this.UserModel.findByIdAndDelete(id).exec();
   }
+
+  async countTotalUser() {
+    return await this.UserModel.countDocuments();
+  }
 }

@@ -29,4 +29,9 @@ export class ProductService {
   async delete(id: number): Promise<Product> {
     return await this.ProductModel.findByIdAndDelete(id).exec();
   }
+
+  async countTotalProduct() {
+    return await this.ProductModel.countDocuments();
+  }
+  
 }
