@@ -29,7 +29,7 @@ import {
     }
   
     @Post('create')
-    @ApiOperation({ summary: 'category Category' })
+    @ApiOperation({ summary: 'Create category' })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     async create(@Body() body: CategoryCreateDto): Promise<Category> {
       return this.categoryService.create({

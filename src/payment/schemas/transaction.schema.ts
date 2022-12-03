@@ -3,11 +3,6 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Seller } from '../../seller/schemas/seller.schema';
 import { Subscription } from '../../subscription/schemas/subscription.schema';
 
-export enum statusTransaction {
-  failed = 'failed',
-  success = 'success',
-}
-
 @Schema({ timestamps: true })
 export class Transaction {
   @Prop()
@@ -16,23 +11,23 @@ export class Transaction {
   @Prop()
   transactionStatusCode: Number;
 
-  @Prop({ type: statusTransaction, default: 'failed' })
-  status: string;
+  @Prop({ type: Number, required: false })
+  public status?: number;
+
+  @Prop({ type: Number, required: false })
+  public refId?: number;
 
   @Prop()
   description: string;
 
-  @Prop()
-  amount: Number;
-
-  @Prop()
-  trackingNumber: Number;
+  @Prop({ type: Number, required: true })
+  amount: number;
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: Seller.name })
-  seller: MongooseSchema.Types.ObjectId;  
+  seller: MongooseSchema.Types.ObjectId;
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: Subscription.name })
-  subscription: MongooseSchema.Types.ObjectId; 
+  subscription: MongooseSchema.Types.ObjectId;
 }
 
 export type TransactionDocument = Transaction & Document;

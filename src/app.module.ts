@@ -10,24 +10,24 @@ import { CommonModule } from './common/common.module';
 import { SmsModule } from './sms/sms.module';
 import { ManagerModule } from './manager/manager.module';
 import { SellerModule } from './seller/seller.module';
-import { TransactionModule } from './transaction/transaction.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost/shopdatabase'),
     DashboardModule,
-    UserModule,
     AuthModule,
+    ManagerModule,
+    UserModule,
+    SellerModule,
     ShopModule,
     CategoryModule,
     ProductModule,
     SubscriptionModule,
-    CommonModule,
     SmsModule,
-    ManagerModule,
-    SellerModule,
-    TransactionModule,
+    PaymentModule,
+    CommonModule,
   ],
   controllers: [],
   providers: [],

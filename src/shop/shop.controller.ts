@@ -14,7 +14,6 @@ import {
 import { Shop } from './schemas/shop.schema';
 import { ShopService } from './shop.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import * as bcrypt from 'bcrypt';
 import { ShopCreateDto } from './dto/shop-create.dto';
 import { AuthInterceptor } from '../auth/auth.interceptor';
 import { AuthGuard } from '../auth/auth.guard';

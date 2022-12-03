@@ -1,12 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Seller } from '../../seller/schemas/seller.schema';
-
-export enum typeSubscription {
-  free = 'free',
-  monthly = 'monthly',
-  yearly = 'yearly',
-}
+import { TypeSubscription } from '../enum/type.enum';
 
 @Schema({ timestamps: true })
 export class Subscription {
@@ -17,22 +12,16 @@ export class Subscription {
   endDate: Date;
 
   @Prop()
-  terminationDate: Date;
+  terminationDate: string;
 
-  @Prop({ type: typeSubscription, default: typeSubscription.free })
-  type: string;
+  @Prop({ type: String, enum: TypeSubscription, default: TypeSubscription.Free })
+  type: TypeSubscription;
 
   @Prop({ default: false })
   expired: Boolean;
 
   @Prop()
-  price: string;
-
-  @Prop()
-  createdAt: Date;
-
-  @Prop()
-  deletedAt?: Date;
+  price: number;
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: Seller.name })
   seller: MongooseSchema.Types.ObjectId;  

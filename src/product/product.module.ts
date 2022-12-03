@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CommonModule } from 'src/common/common.module';
+import { PaymentModule } from 'src/payment/payment.module';
 import { ProductController } from './product.controller';
 import { ProductService } from './product.service';
 import { Product, ProductSchema } from './schemas/product.schema';
@@ -10,6 +11,7 @@ import { UploadController } from './upload.controller';
   imports: [
     MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
     CommonModule,
+    PaymentModule
   ],
   controllers: [ProductController,UploadController],
   providers: [ProductService],
